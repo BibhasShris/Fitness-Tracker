@@ -4,8 +4,11 @@ export default function Profile({ name, age }) {
   return (
     <div>
       <img src={ProfilePic} alt="Profile" />
-      <h2>{name}</h2>
-      <h3>{age}</h3>
+      <h2>Name: {name}</h2>
+      <section>
+        <h3>Age</h3>
+        <p>{age}</p>
+      </section>
     </div>
   );
 }
