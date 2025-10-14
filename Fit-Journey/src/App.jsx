@@ -2,5 +2,9 @@ import Profile from "./Components/Profile.jsx";
 import "./App.css";
 
 export default function App() {
-  return <Profile />;
+  return (
+    <div className="tracker-layout">
+      <Profile />
+    </div>
+  );
 }

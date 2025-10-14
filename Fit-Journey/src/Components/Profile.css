@@ -20,13 +20,14 @@
 
 .profile-row {
   display: flex;
-  justify-content: space-around; /* even spacing */
-  margin: 6px 0;
+  justify-content: center;
+  gap: 60px;
+  margin: 8px 0;
 }
 
 .profile-row h3,
 .profile-row p {
-  flex: 1;
+  min-width: 60px;
   text-align: center;
 }
 
