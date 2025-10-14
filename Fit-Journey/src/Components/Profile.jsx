@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import ProfilePic from "../img/profilePic.png";
+import { useState } from "react";
+import ProfileView from "./ProfileView";
+import ProfileEdit from "./ProfileEdit";
 
 export default function Profile() {
   const [name, setName] = useState("");
@@ -8,113 +9,56 @@ export default function Profile() {
   const [age, setAge] = useState("");
   const [isEditing, setIsEditing] = useState(false);
 
-  // Load data on mount
-  useEffect(() => {
-    const savedData = localStorage.getItem("profileData");
-    if (savedData) {
-      const parsed = JSON.parse(savedData);
-      setName(parsed.name || "");
-      setWeight(parsed.weight || "");
-      setHeight(parsed.height || "");
-      setAge(parsed.age || "");
-    }
-  }, []);
+  const [tempName, setTempName] = useState(name);
+  const [tempWeight, setTempWeight] = useState(weight);
+  const [tempHeight, setTempHeight] = useState(height);
+  const [tempAge, setTempAge] = useState(age);
 
-  // Handle save
+  function handleEdit() {
+    setTempName(name);
+    setTempWeight(weight);
+    setTempHeight(height);
+    setTempAge(age);
+    setIsEditing(true);
+  }
+
   function handleSave() {
-    const profileData = { name, weight, height, age };
-    localStorage.setItem("profileData", JSON.stringify(profileData));
+    setName(tempName);
+    setWeight(tempWeight);
+    setHeight(tempHeight);
+    setAge(tempAge);
     setIsEditing(false);
   }
 
-  // Handle cancel — revert to saved version
   function handleCancel() {
-    const savedData = localStorage.getItem("profileData");
-    if (savedData) {
-      const parsed = JSON.parse(savedData);
-      setName(parsed.name || "");
-      setWeight(parsed.weight || "");
-      setHeight(parsed.height || "");
-      setAge(parsed.age || "");
-    }
     setIsEditing(false);
   }
 
   return (
-    <div className="profile">
-      <h2>Your Profile</h2>
-      <img src={ProfilePic} alt="Profile" width="150" />
-
+    <div>
       {isEditing ? (
-        // EDIT MODE
-        <form>
-          <label>
-            Name:
-            <input
-              placeholder="Enter your name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Weight (lb):
-            <input
-              placeholder="Enter weight"
-              value={weight}
-              onChange={(e) => setWeight(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Height (ft):
-            <input
-              placeholder="Enter height"
-              value={height}
-              onChange={(e) => setHeight(e.target.value)}
-            />
-          </label>
-
-          <label>
-            Age:
-            <input
-              placeholder="Enter age"
-              value={age}
-              onChange={(e) => setAge(e.target.value)}
-            />
-          </label>
-
-          <div style={{ marginTop: "10px" }}>
-            <button type="button" onClick={handleSave}>
-              Save
-            </button>
-            <button
-              type="button"
-              onClick={handleCancel}
-              style={{ marginLeft: "8px" }}
-            >
-              Cancel
-            </button>
-          </div>
-        </form>
+        // Editing mode
+        <ProfileEdit
+          tempName={tempName}
+          tempWeight={tempWeight}
+          tempHeight={tempHeight}
+          tempAge={tempAge}
+          setTempName={setTempName}
+          setTempWeight={setTempWeight}
+          setTempHeight={setTempHeight}
+          setTempAge={setTempAge}
+          onSave={handleSave}
+          onCancel={handleCancel}
+        />
       ) : (
-        // VIEW MODE
-        <section>
-          <p>
-            <strong>Name:</strong> {name || "—"}
-          </p>
-          <p>
-            <strong>Weight:</strong> {weight ? `${weight} lb` : "—"}
-          </p>
-          <p>
-            <strong>Height:</strong> {height ? `${height} ft` : "—"}
-          </p>
-          <p>
-            <strong>Age:</strong> {age || "—"}
-          </p>
-
-          <button onClick={() => setIsEditing(true)}>Edit</button>
-        </section>
+        // View Mode
+        <ProfileView
+          name={name}
+          weight={weight}
+          height={height}
+          age={age}
+          onEdit={handleEdit}
+        />
       )}
     </div>
   );

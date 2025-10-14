@@ -1,0 +1,36 @@
+.profile-card {
+  max-width: 360px;
+  margin: 0 auto; /* center horizontally */
+  text-align: center; /* center text */
+  padding: 20px;
+}
+
+.profile-pic {
+  display: block;
+  margin: 0 auto 16px auto; /* centers the image */
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-name {
+  margin-bottom: 16px;
+}
+
+.profile-row {
+  display: flex;
+  justify-content: space-around; /* even spacing */
+  margin: 6px 0;
+}
+
+.profile-row h3,
+.profile-row p {
+  flex: 1;
+  text-align: center;
+}
+
+.edit-btn {
+  margin-top: 16px;
+  padding: 6px 14px;
+}
