@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Profile from "./Components/Profile.jsx";
 import DailyGoals from "./Components/DailyGoals/DailyGoals.jsx";
 import "./App.css";
+import Schedule from "./Components/Schedule/Schedule.jsx";
 
 export default function App() {
   const [today, setToday] = useState({ steps: 0, calories: 0, heartRate: 80 });
@@ -11,7 +12,6 @@ export default function App() {
     console.log("Updated goals:", updated);
   };
   return (
-    <>
     <div className="tracker-layout">
       {/* Left Column */}
       <div className="left-column">
@@ -22,13 +22,9 @@ export default function App() {
       {/* Right Column */}
       <div className="right-column">
         <Profile />
+        <Schedule />
         {/* <Schedule /> and <Rewards /> will go here later */}
       </div>
-      <Profile />
     </div>
-    <div className="daily-goals">
-      <DailyGoals todayEntry={today} onUpdate={handleUpdate} />
-    </div>
-  </>
   );
 }
