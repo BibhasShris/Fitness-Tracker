@@ -11,9 +11,13 @@ export default function App() {
     console.log("Updated goals:", updated);
   };
   return (
+    <>
     <div className="tracker-layout">
-    <Profile />
-    <DailyGoals todayEntry={today} onUpdate={handleUpdate} />
+      <Profile />
     </div>
+    <div className="daily-goals">
+      <DailyGoals todayEntry={today} onUpdate={handleUpdate} />
+    </div>
+  </>
   );
 }

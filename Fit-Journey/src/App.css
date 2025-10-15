@@ -22,3 +22,17 @@ body {
   border: 2px solid #444;
   text-align: center;
 }
+
+.daily-goals {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.daily-goals {
+  width: 55%;
+  padding: 2rem;
+  box-sizing: border-box;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
