@@ -12,8 +12,17 @@ export default function App() {
   };
   return (
     <div className="tracker-layout">
-    <Profile />
-    <DailyGoals todayEntry={today} onUpdate={handleUpdate} />
+      {/* Left Column */}
+      <div className="left-column">
+        <DailyGoals todayEntry={today} onUpdate={handleUpdate} />
+        {/* <Sleep /> will go here later */}
+      </div>
+
+      {/* Right Column */}
+      <div className="right-column">
+        <Profile />
+        {/* <Schedule /> and <Rewards /> will go here later */}
+      </div>
     </div>
   );
 }
