@@ -1,0 +1,31 @@
+/* Schedule container */
+.schedule-card {
+  border: 2px solid #444;
+  padding: 20px;
+  width: 300px;
+  margin-top: 20px;
+  text-align: left;
+  border-radius: 8px;
+}
+
+/* Inner layout for entries */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Each schedule entry box */
+.schedule-entry {
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+/* Optional: adjust text look */
+.schedule-entry p {
+  margin: 0;
+  font-size: 14px;
+}
