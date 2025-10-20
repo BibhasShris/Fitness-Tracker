@@ -1,51 +1,124 @@
-.dailyGoals {
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  padding: 16px;
-  max-width: 400px;
-  font-family: sans-serif;
- }
- 
- 
- .goalItem {
-  margin-bottom: 12px;
- }
- 
- 
- .goalItem label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 4px;
- }
- 
- 
- .goalItem input {
+.daily-goals {
+  max-width: 420px;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,.06);
+  box-sizing: border-box;
+  margin: 2rem;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.dg-title {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #111827;
+}
+
+.dg-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 8px;
+  padding: 12px 0;
+  border-top: 1px solid #f3f4f6;
+}
+
+.dg-row:first-of-type { border-top: 0; }
+
+.dg-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dg-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+
+.dg-labels { display: flex; flex-direction: column; }
+.dg-name { font-weight: 600; color: #111827; }
+.dg-sub  { font-size: .9rem; color: #6b7280; }
+
+.dg-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.dg-field { display: flex; align-items: center; gap: 6px; }
+.dg-field-label { font-size: .85rem; color: #4b5563; }
+
+.dg-field input {
+  width: 100px;
+  padding: 6px 8px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: .95rem;
+  text-align: center;
+}
+
+.dg-field input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59,130,246,.2);
+}
+
+/* Progress bar */
+.dg-progress {
   width: 100%;
-  padding: 6px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
- }
- 
- 
- .goalItem p {
-  margin: 4px 0 0;
-  font-size: 0.9rem;
-  color: #555;
- }
- 
- 
- button {
-  margin-top: 10px;
-  padding: 8px 12px;
+  height: 10px;
+  background: #f3f4f6;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid #e5e7eb;
+}
+
+.dg-progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #60a5fa, #2563eb);
+  transition: width 180ms ease;
+}
+
+.dg-percent {
+  font-size: .9rem;
+  color: #374151;
+}
+
+/* Save button */
+.dg-save {
+  margin-top: 12px;
+  background: #2563eb;
+  color: #fff;
   border: none;
-  border-radius: 4px;
-  background-color: #3b82f6;
-  color: white;
+  padding: 10px 16px;
+  border-radius: 8px;
   cursor: pointer;
- }
- 
- 
- button:hover {
-  background-color: #2563eb;
- }
- 
+  font-weight: 600;
+}
+
+.dg-save:hover { background: #1d4ed8; }
+
+.dg-toast {
+  margin-top: 10px;
+  background-color: #22c55e;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.95rem;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  display: inline-block;
+}
+
+/* optional fade-out if you want a smooth exit */
+.dg-toast.fade {
+  opacity: 0;
+}

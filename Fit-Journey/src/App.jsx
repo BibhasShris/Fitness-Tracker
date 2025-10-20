@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import DailyGoals from "./Components/DailyGoals/DailGoals";
+import DailyGoals from "./Components/DailyGoals/DailyGoals";
 import './App.css'
 
 
