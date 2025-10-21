@@ -1,55 +1,61 @@
-/* Basic layout styling */
-body {
-  background-color: #1a1a1a;
-  color: white;
-  font-family: "Inter", sans-serif;
-  margin: 0;
-  padding: 0;
-}
+/* Page background + type lives in index.css */
 
-.tracker-layout {
+/* ---------- App Header ---------- */
+.app-header {
+  position: sticky;            /* stays on top */
+  top: 0;
+  z-index: 1000;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 300px;
-  padding: 20px;
-  width: 100%;
-  height: 100%;
+  justify-content: center;     /* centered title */
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  background: linear-gradient(145deg, #2d1b55, #1b1233);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
+}
+.app-header-icon { width: 26px; height: 26px; object-fit: contain; }
+.app-header h1 {
+  font-size: 1.9rem;
+  font-weight: 700;
+  letter-spacing: .4px;
+  margin: 0;
 }
 
-/* Left column (Daily Goals, Sleep, etc.) */
+/* ---------- Main Layout ---------- */
+/* Use a content container so cards don’t stick to the viewport edges */
+.tracker-layout {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 12px 24px;     /* top padding so it doesn't hug header */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;  /* left column grows, right column fixed */
+  gap: 28px;
+  align-items: start;
+}
+
+/* Left column holds DailyGoals + HeartRate (+ future Sleep) */
 .left-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  flex: 1;
+  min-width: 0; /* allow children to shrink properly */
 }
 
-/* Right column (Profile, Schedule, Rewards) */
+/* Right column holds Profile + Schedule (+ future Rewards panel if desired) */
 .right-column {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  align-items: flex-end;
-  flex: 1;
+  min-width: 0;
 }
 
-.profile-card {
-  width: 300px;
-  border: 2px solid #444;
-  text-align: center;
-}
+/* DO NOT override component cards here. Let each component style itself. */
 
-.daily-goals {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.daily-goals {
-  width: 55%;
-  padding: 2rem;
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  top: 0;
+/* Responsive: on small screens, stack columns */
+@media (max-width: 992px) {
+  .tracker-layout {
+    grid-template-columns: 1fr;
+  }
 }

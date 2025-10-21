@@ -5,6 +5,7 @@ import Heartrate from "./Components/Heartrate/Heartrate";
 import Rewards from "./Components/RewardsForGoals/Rewards.jsx";
 import "./App.css";
 import Schedule from "./Components/Schedule/Schedule.jsx";
+import Fit from "./img/fit.png";
 // import RewardsSection from "./Components/Rewards/RewardsSection.jsx";
 
 export default function App() {
@@ -25,6 +26,13 @@ export default function App() {
   };
 
   return (
+    <>
+    {/* App header */}
+    <header className="app-header">
+      <img src={Fit} alt="Fitness icon" className="app-header-icon" />
+      <h1>Fit Journey</h1>
+    </header>
+    {/* Main Content */}
     <div className="tracker-layout">
       {/* Left Column */}
       <div className="left-column">
@@ -44,5 +52,6 @@ export default function App() {
         <RewardsSection />
       </div> */}
     </div>
+    </>
   );
 }

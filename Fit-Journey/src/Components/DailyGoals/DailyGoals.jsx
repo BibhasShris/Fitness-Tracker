@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import "./DailyGoals.css";
 import Steps from "../../img/steps.png";
 import Cal from "../../img/cal.png";
-import Fit from "../../img/fit.png";
+import Goal from "../../img/goal.png";
 
 export default function DailyGoals({
   todayEntry = { steps: 0, calories: 0 },
@@ -64,7 +64,7 @@ export default function DailyGoals({
     <section className="daily-goals">
       {/* Tttle aligned with Heart Rate - added fit icon */}
       <div className="dg-header">
-        <img src={Fit} alt="Fitness Icon" className="dg-title-icon" />
+        <img src={Goal} alt="Goals Icon" className="dg-title-icon" />
         <h2 className="dg-title">Daily Goals</h2>
       </div>
 

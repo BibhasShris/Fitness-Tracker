@@ -1,11 +1,25 @@
+// src/Components/RewardsForGoals/Rewards.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import "./Rewards.css";
 import Trophy from "../../img/trophy.png";
-
-
+/**
+ * Rewards panel
+ * - Awards trophies ONLY for Steps and Calories (no heart-rate goal)
+ * - Stores trophies in localStorage and filters out any legacy heart-rate entries
+ * - Stacked, labeled list with a count badge
+ *
+ * Props:
+ *  - todayEntry: { steps, calories }
+ *  - goals:      { steps, calories }
+ */
 export default function Rewards({ todayEntry = {}, goals = {} }) {
   const STORAGE_KEY = "fitjourney.rewards.v1";
-  const [rewards, setRewards] = useState([]);
+  const GOAL_KEYS = ["steps", "calories"]; // <- heartRate removed
+
+  const LABELS = {
+    steps: "Steps goal",
+    calories: "Calories goal",
+  };
 
   const todayKey = useMemo(() => {
     const d = new Date();
@@ -15,17 +29,23 @@ export default function Rewards({ todayEntry = {}, goals = {} }) {
     return `${y}-${m}-${day}`;
   }, []);
 
-  // load saved rewards on mount
+  const [rewards, setRewards] = useState([]);
+
+  // load (and sanitize legacy heart-rate trophies)
   useEffect(() => {
     try {
       const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "[]");
-      setRewards(Array.isArray(saved) ? saved : []);
+      const cleaned = Array.isArray(saved)
+        ? saved.filter((r) => r && GOAL_KEYS.includes(r.key)) // drop heartRate entries
+        : [];
+      setRewards(cleaned);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
     } catch {
       setRewards([]);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // helper to persist
   const saveRewards = (next) => {
     setRewards(next);
     try {
@@ -35,30 +55,23 @@ export default function Rewards({ todayEntry = {}, goals = {} }) {
     }
   };
 
-  // check which goals are met
+  // determine which goals are met (steps & calories only)
   const metFlags = {
     steps:
-      Number(todayEntry?.steps ?? 0) >= Number(goals?.steps ?? Number.MAX_SAFE_INTEGER),
+      Number(todayEntry?.steps ?? 0) >=
+      Number(goals?.steps ?? Number.POSITIVE_INFINITY),
     calories:
-      Number(todayEntry?.calories ?? 0) >= Number(goals?.calories ?? Number.MAX_SAFE_INTEGER),
-    heartRate:
-      Number(todayEntry?.heartRate ?? 0) >= Number(goals?.heartRate ?? Number.MAX_SAFE_INTEGER),
+      Number(todayEntry?.calories ?? 0) >=
+      Number(goals?.calories ?? Number.POSITIVE_INFINITY),
   };
 
-  const LABELS = {
-    steps: "Steps goal",
-    calories: "Calories goal",
-    heartRate: "Heart Rate goal",
-  };
-
-  // when props change, award any new trophies - only once per day per goal
+  // award new trophies once per day per goal
   useEffect(() => {
-    const next = [...rewards];
-    ["steps", "calories", "heartRate"].forEach((key) => {
+    let next = rewards.slice();
+    GOAL_KEYS.forEach((key) => {
       if (!metFlags[key]) return;
-      // already awarded today
-      const already = next.some((r) => r.key === key && r.date === todayKey);
-      if (!already) {
+      const alreadyToday = next.some((r) => r.key === key && r.date === todayKey);
+      if (!alreadyToday) {
         next.unshift({
           id: `${todayKey}:${key}`,
           key,
@@ -68,6 +81,7 @@ export default function Rewards({ todayEntry = {}, goals = {} }) {
       }
     });
     if (next.length !== rewards.length) saveRewards(next);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [todayEntry, goals, todayKey]);
 
   if (!rewards.length) return null;

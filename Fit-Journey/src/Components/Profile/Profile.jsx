@@ -8,9 +8,9 @@ export default function Profile() {
   const [height, setHeight] = useState("");
   const [age, setAge] = useState("");
   const [isEditing, setIsEditing] = useState(false);
-  const [isLoaded, setIsLoaded] = useState(false); // ✅ prevents premature saving
+  const [isLoaded, setIsLoaded] = useState(false); // prevents premature saving
 
-  // ✅ Load saved profile data on mount
+  // Load saved profile data on mount
   useEffect(() => {
     const saved = localStorage.getItem("profileData");
     if (saved) {
@@ -20,10 +20,10 @@ export default function Profile() {
       setHeight(data.height || "");
       setAge(data.age || "");
     }
-    setIsLoaded(true); // ✅ mark data as loaded after initialization
+    setIsLoaded(true); // mark data as loaded after initialization
   }, []);
 
-  // ✅ Save to localStorage only after initial load is done
+  // Save to localStorage only after initial load is done
   useEffect(() => {
     if (isLoaded) {
       const data = { name, weight, height, age };

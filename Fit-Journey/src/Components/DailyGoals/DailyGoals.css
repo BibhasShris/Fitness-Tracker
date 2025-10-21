@@ -1,6 +1,7 @@
-/* card shell - same as .profile-card === */
+/* Card */
 .daily-goals{
-  max-width: 960px;
+  width: calc(100% - 4rem);
+  max-width: 1200px;
   margin: 0 2rem 1.25rem 2rem;
   padding: 24px;
   border-radius: 20px;
@@ -10,70 +11,63 @@
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* title row (icon + text) */
+/* Title */
 .dg-header{
   display:flex; align-items:center; gap:10px;
-  margin-bottom: 14px;
+  margin-bottom:14px;
 }
-.dg-title{ margin:0; font-size: 1.4rem; font-weight: 600; }
-.dg-title-icon{ width: 22px; height: 22px; object-fit: contain; }
+.dg-title{ margin:0; font-size:1.4rem; font-weight:600; }
+.dg-title-icon{ width:22px; height:22px; object-fit:contain; }
 
-/* tiles layout */
+/* Tiles */
 .dg-grid{
-  display:grid;
-  grid-template-columns: repeat(2, minmax(280px, 1fr));
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(360px, 1fr));
+  gap: 24px;
 }
-
-/* tile panel inside the card */
 .dg-card{
-  padding: 14px;
-  border-radius: 14px;
+  padding:14px;
+  border-radius:14px;
   background: rgba(0,0,0,0.15);
   border: 1px solid rgba(255,255,255,0.10);
 }
 
-/* tile header */
-.dg-icon{ width: 20px; height: 20px; object-fit: contain; }
-
-.dg-top {
-  display: flex;
+/* Header inside tile */
+.dg-top{
+  display:flex;
   align-items: baseline;
-  gap: 6px;
+  gap:6px;
 }
+.dg-icon{ width:20px; height:20px; object-fit:contain; }
+.dg-name{ font-weight:700; margin-right:4px; }
+.dg-sub{ color:#c5b6ff; font-size:.9rem; letter-spacing:.3px; }
 
-.dg-name {
-  font-weight: 700;
-  margin-right: 4px;
+/* Inputs (current | goal on same row) */
+.dg-inputs{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 12px;
 }
-
-.dg-sub {
-  color: #c5b6ff;
-  font-size: 0.9rem;
-  letter-spacing: 0.3px;
-}
-
-
-/* inputs - dark, rounded like card */
-.dg-inputs{ display:flex; gap:10px; margin-top: 8px; flex-wrap: wrap; }
 .dg-inputs input{
-  width: 140px;
-  padding: 8px 12px;
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 14px;
   border: 1px solid #4b3d80;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #1e1e1e;
   color: #fff;
   text-align: center;
 }
 .dg-inputs input:focus{
-  outline: none;
-  border-color: #b26cff;
-  box-shadow: 0 0 0 3px rgba(178,108,255,0.25);
+  outline:none;
+  border-color:#b26cff;
+  box-shadow:0 0 0 3px rgba(178,108,255,0.25);
 }
 
-/* progress bar */
+/* Progress */
 .dg-progress{
-  margin-top: 10px;
+  margin-top: 12px;
   width: 100%;
   height: 10px;
   border-radius: 999px;
@@ -82,42 +76,28 @@
   border: 1px solid #3a3a3a;
 }
 .dg-bar{
-  height: 100%;
-  width: 0%;
+  height:100%;
+  width:0%;
   background: linear-gradient(90deg, #7aa2ff, #2563eb);
   transition: width .18s ease;
 }
-.dg-percent{ margin-top:6px; color:#e9e6ff; font-weight: 600; text-align:center; }
+.dg-percent{
+  margin-top:6px; color:#e9e6ff; font-weight:600; text-align:center;
+}
 
-/* save button - same style as .edit-btn */
+/* Save */
 .dg-save{
-  display: inline-block;
-  margin: 16px auto 0 auto;
-  padding: 10px 18px;
-  border: none;
-  border-radius: 30px;
+  display:inline-block; margin:16px auto 0 auto;
+  padding:10px 18px; border:none; border-radius:30px;
   background: linear-gradient(90deg, #b26cff, #7438ff);
-  color: white;
-  cursor: pointer;
-  font-weight: 600;
-  transition: background 0.3s ease, transform 0.2s ease;
+  color:white; cursor:pointer; font-weight:600;
+  transition: background .3s ease, transform .2s ease;
 }
-.dg-save:hover{
-  background: linear-gradient(90deg, #9c5eff, #5a25e8);
-  transform: scale(1.05);
-}
+.dg-save:hover{ background: linear-gradient(90deg, #9c5eff, #5a25e8); transform: scale(1.05); }
+.dg-toast{ display:inline-block; margin-left:12px; padding:6px 10px; border-radius:12px; background:#22c55e; color:#0b1b0f; font-weight:700; }
 
-/* saved toast - small pill */
-.dg-toast{
-  display: inline-block;
-  margin-left: 12px;
-  padding: 6px 10px;
-  border-radius: 12px;
-  background: #22c55e;
-  color: #0b1b0f;
-  font-weight: 700;
-}
-
+/* Responsive */
 @media (max-width: 720px){
   .dg-grid{ grid-template-columns: 1fr; }
+  .dg-inputs{ grid-template-columns: 1fr; }
 }
