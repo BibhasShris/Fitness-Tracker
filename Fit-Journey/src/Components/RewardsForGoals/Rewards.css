@@ -1,6 +1,5 @@
 /* panel matches card gradient and the time selector feel */
 .rewards-panel{
-    position: fixed;
     right: 24px;
     bottom: 24px;
     width: 300px;
