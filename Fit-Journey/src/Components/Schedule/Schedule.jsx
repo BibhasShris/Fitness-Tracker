@@ -1,13 +1,5 @@
 // Schedule.jsx
-// Purpose: Main schedule section — shows all workouts and manages popup + state
 // References:
-// - React useState Hook: https://react.dev/reference/react/useState
-// - MDN Web Docs: Array.sort(), Date.now(), and HTML <select>
-
-// Schedule.jsx
-// Purpose: Main schedule section — shows all workouts and manages popup + state
-// References:
-// - React useState Hook: https://react.dev/reference/react/useState
 // - MDN Web Docs: Array.sort(), Date.now(), and HTML <select>
 
 import { useState } from "react";
