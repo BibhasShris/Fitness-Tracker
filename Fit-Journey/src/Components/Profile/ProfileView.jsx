@@ -1,4 +1,4 @@
-import ProfilePic from "../img/profilePic.png";
+import ProfilePic from "../../img/profilePic.png";
 import "./Profile.css";
 
 export default function ProfileView({ name, weight, height, age, onEdit }) {
