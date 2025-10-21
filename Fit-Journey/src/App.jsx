@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Profile from "./Components/Profile.jsx";
+import Profile from "./Components/Profile/Profile.jsx";
 import DailyGoals from "./Components/DailyGoals/DailyGoals.jsx";
 import "./App.css";
 import Schedule from "./Components/Schedule/Schedule.jsx";
