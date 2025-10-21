@@ -1,41 +1,123 @@
-.daily-goals {
-  max-width: 360px;
-  margin: 0;
-  text-align: left;
-  padding: 20px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  height: auto;
-  box-sizing: border-box;
+/* card shell - same as .profile-card === */
+.daily-goals{
+  max-width: 960px;
+  margin: 0 2rem 1.25rem 2rem;
+  padding: 24px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #2d1b55, #1b1233);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  border: 1px solid rgba(255,255,255,0.06);
 }
 
-.goal-item {
-  margin-bottom: 12px;
+/* title row (icon + text) */
+.dg-header{
+  display:flex; align-items:center; gap:10px;
+  margin-bottom: 14px;
+}
+.dg-title{ margin:0; font-size: 1.4rem; font-weight: 600; }
+.dg-title-icon{ width: 22px; height: 22px; object-fit: contain; }
+
+/* tiles layout */
+.dg-grid{
+  display:grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 16px;
 }
 
-.goal-item label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 4px;
+/* tile panel inside the card */
+.dg-card{
+  padding: 14px;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.10);
 }
 
-.goal-item input {
-  width: 100%;
-  padding: 6px;
-  border: 1px solid #aaa;
-  border-radius: 4px;
+/* tile header */
+.dg-icon{ width: 20px; height: 20px; object-fit: contain; }
+
+.dg-top {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
 }
 
-button {
-  margin-top: 10px;
+.dg-name {
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+.dg-sub {
+  color: #c5b6ff;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+
+/* inputs - dark, rounded like card */
+.dg-inputs{ display:flex; gap:10px; margin-top: 8px; flex-wrap: wrap; }
+.dg-inputs input{
+  width: 140px;
   padding: 8px 12px;
+  border: 1px solid #4b3d80;
+  border-radius: 12px;
+  background: #1e1e1e;
+  color: #fff;
+  text-align: center;
+}
+.dg-inputs input:focus{
+  outline: none;
+  border-color: #b26cff;
+  box-shadow: 0 0 0 3px rgba(178,108,255,0.25);
+}
+
+/* progress bar */
+.dg-progress{
+  margin-top: 10px;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #2b2b2b;
+  border: 1px solid #3a3a3a;
+}
+.dg-bar{
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #7aa2ff, #2563eb);
+  transition: width .18s ease;
+}
+.dg-percent{ margin-top:6px; color:#e9e6ff; font-weight: 600; text-align:center; }
+
+/* save button - same style as .edit-btn */
+.dg-save{
+  display: inline-block;
+  margin: 16px auto 0 auto;
+  padding: 10px 18px;
   border: none;
-  border-radius: 4px;
-  background-color: #3b82f6;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #b26cff, #7438ff);
   color: white;
   cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+.dg-save:hover{
+  background: linear-gradient(90deg, #9c5eff, #5a25e8);
+  transform: scale(1.05);
 }
 
-button:hover {
-  background-color: #2563eb;
+/* saved toast - small pill */
+.dg-toast{
+  display: inline-block;
+  margin-left: 12px;
+  padding: 6px 10px;
+  border-radius: 12px;
+  background: #22c55e;
+  color: #0b1b0f;
+  font-weight: 700;
+}
+
+@media (max-width: 720px){
+  .dg-grid{ grid-template-columns: 1fr; }
 }
