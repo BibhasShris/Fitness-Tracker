@@ -1,33 +1,37 @@
+/* Card layout */
 .schedule-card {
-  border-radius: 20px;
-  padding: 24px;
   width: 360px;
+  padding: 24px;
+  margin-top: 24px;
+  border-radius: 20px;
   background: linear-gradient(145deg, #241a3c, #1a142b);
   color: #fff;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-  margin-top: 24px;
 }
 
+/* Title */
 .schedule-title {
   font-size: 1.3rem;
   font-weight: 600;
-  margin-bottom: 16px;
   text-align: center;
+  margin-bottom: 16px;
 }
 
+/* Workout list */
 .schedule-list {
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
+/* Individual workout box */
 .schedule-entry {
-  background: rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 10px 14px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
   transition: background 0.3s ease;
 }
 
@@ -35,64 +39,69 @@
   background: rgba(255, 255, 255, 0.15);
 }
 
-.status-label {
-  font-size: 0.8rem;
-  padding: 4px 10px;
+/* Dropdown replaces old label and changes color */
+.status-select {
+  border: none;
   border-radius: 8px;
-  text-transform: capitalize;
+  padding: 6px 10px;
+  font-weight: 600;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
 }
 
-.status-label.not-started {
-  background: #5a5a5a;
-  color: #ddd;
+.status-select.not-started {
+  background-color: #5a5a5a;
 }
 
-.status-label.in-progress {
-  background: #ffb84d;
+.status-select.in-progress {
+  background-color: #ffb84d;
   color: #222;
 }
 
-.status-label.done {
-  background: #58d68d;
+.status-select.done {
+  background-color: #58d68d;
   color: #111;
 }
 
+.status-select option {
+  background-color: #2e1a47;
+  color: white;
+}
+
+/* Add workout button */
 .add-workout-btn {
+  width: 100%;
   margin-top: 18px;
   padding: 10px 16px;
-  width: 100%;
   border: none;
   border-radius: 30px;
-  background: linear-gradient(90deg, #b26cff, #7438ff);
-  color: white;
   font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #b26cff, #7438ff);
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background 0.3s ease;
 }
 
 .add-workout-btn:hover {
   background: linear-gradient(90deg, #9c5eff, #5a25e8);
-  transform: scale(1.03);
 }
 
 /* Popup */
 .popup-overlay {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  inset: 0;
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(0, 0, 0, 0.6);
 }
 
 .popup-card {
-  background: #2c1f4a;
+  width: 320px;
   padding: 24px;
   border-radius: 16px;
-  width: 320px;
+  background: #2c1f4a;
   color: white;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
 }
@@ -105,13 +114,19 @@
 .popup-card input,
 .popup-card select {
   width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: none;
   margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
   background: rgba(255, 255, 255, 0.1);
   color: white;
   font-size: 0.9rem;
+  outline: none;
+}
+
+.popup-card select option {
+  background-color: #2e1a47;
+  color: white;
 }
 
 .popup-buttons {
@@ -125,13 +140,12 @@
   padding: 8px 0;
   border: none;
   border-radius: 30px;
-  cursor: pointer;
   font-weight: 600;
-  background: linear-gradient(90deg, #b26cff, #7438ff);
   color: white;
-  transition: transform 0.2s ease;
+  background: linear-gradient(90deg, #b26cff, #7438ff);
+  cursor: pointer;
 }
 
 .popup-buttons button:hover {
-  transform: scale(1.05);
+  background: linear-gradient(90deg, #9c5eff, #5a25e8);
 }
