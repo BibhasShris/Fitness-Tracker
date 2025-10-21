@@ -17,7 +17,6 @@
 a { font-weight: 500; color: #9aa3ff; text-decoration: none; }
 a:hover { color: #b5bcff; }
 
-/* IMPORTANT: do NOT center the whole app */
 html, body {
   margin: 0;
   padding: 0;

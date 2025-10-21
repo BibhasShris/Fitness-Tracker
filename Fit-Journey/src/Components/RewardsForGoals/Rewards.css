@@ -13,7 +13,7 @@
     z-index: 9999;
   }
   
-  /* header bar - dark like the time dropdown */
+  /* header bar */
   .rewards-header{
     display: flex;
     align-items: center;
@@ -43,7 +43,7 @@
     overflow-y: auto;
   }
   
-  /* each reward looks like a selector row - rounded, dark, subtle border */
+  /* styling the same as selector row - rounded, dark, subtle border */
   .reward-item{
     display: flex;
     align-items: center;
@@ -60,9 +60,8 @@
   .reward-trophy{ width: 20px; height: 20px; object-fit: contain; }
   .reward-label{ font-size: 0.95rem; }
   
-  /* small hover like selector selections */
+  /* small hover like selector */
   .reward-item:hover{
     border-color: #5a25e8;
     box-shadow: 0 0 0 2px rgba(116,56,255,0.25);
   }
-  
