@@ -1,18 +1,15 @@
-// Schedule.jsx
-// References:
 // - MDN Web Docs: Array.sort(), Date.now(), and HTML <select>
 
-import { useState } from "react";
+import React, { useState } from "react";
 import ScheduleList from "./ScheduleList";
 import SchedulePopup from "./SchedulePopup";
 import "./Schedule.css";
 
 export default function Schedule() {
-  // Store all workout objects added by the user
   const [workouts, setWorkouts] = useState([]);
   const [showPopup, setShowPopup] = useState(false);
+  const [showCompletePopup, setShowCompletePopup] = useState(false);
 
-  // Keep workouts sorted by weekday
   const dayOrder = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
 
   // Add a new workout
@@ -23,11 +20,20 @@ export default function Schedule() {
     setWorkouts(updated);
   }
 
-  // Change progress status for a workout
+  // When workout status changes
   function handleStatusChange(id, newStatus) {
-    setWorkouts((prev) =>
-      prev.map((w) => (w.id === id ? { ...w, status: newStatus } : w))
-    );
+    if (newStatus === "Done") {
+      // Remove the workout from the list
+      setWorkouts((prev) => prev.filter((w) => w.id !== id));
+
+      // Show the completion popup
+      setShowCompletePopup(true);
+    } else {
+      // If not done, just update status
+      setWorkouts((prev) =>
+        prev.map((w) => (w.id === id ? { ...w, status: newStatus } : w))
+      );
+    }
   }
 
   return (
@@ -52,6 +58,22 @@ export default function Schedule() {
             setShowPopup(false);
           }}
         />
+      )}
+
+      {/*Simple completion popup */}
+      {showCompletePopup && (
+        <div className="workout-popup">
+          <div className="popup-box">
+            <h3> Workout Completed!</h3>
+            <p>Great job, keep on going!</p>
+            <button
+              className="close-popup-btn"
+              onClick={() => setShowCompletePopup(false)}
+            >
+              Close
+            </button>
+          </div>
+        </div>
       )}
     </div>
   );
