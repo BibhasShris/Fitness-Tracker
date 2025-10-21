@@ -40,16 +40,38 @@ body {
   text-align: center;
 }
 
-.daily-goals {
-  display: inline-block;
-  vertical-align: top;
+.daily-goals { display: block; }
+
+/* App Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 28px;
+  background: linear-gradient(145deg, #2d1b55, #1b1233);
+  color: #fff;
+  border-bottom: 1px solid rgba(255,255,255,0.10);
+  box-shadow: 0 6px 16px rgba(0,0,0,.35);
 }
 
-.daily-goals {
-  width: 55%;
-  padding: 2rem;
-  box-sizing: border-box;
-  position: absolute;
-  left: 0;
-  top: 0;
+.app-header-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
+.app-header h1 {
+  font-family: "Inter", sans-serif;
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: .4px;
+  margin: 0;
+}
+
+.tracker-layout {
+  padding-top: 12px;
 }
