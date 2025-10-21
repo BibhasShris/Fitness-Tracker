@@ -1,0 +1,55 @@
+.rewards-card {
+  background: linear-gradient(145deg, #1c0435, #2c075a);
+  border-radius: 16px;
+  padding: 24px;
+  margin-top: 24px;
+  color: #fff;
+}
+
+.rewards-title {
+  font-size: 1.3rem;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.badge-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-items: center;
+  gap: 28px;
+}
+
+.badge-box {
+  text-align: center;
+  width: 140px;
+}
+
+.badge-img {
+  width: 70px;
+  height: 70px;
+  display: block;
+  margin: 0 auto 10px auto;
+  transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* Locked badges */
+.badge-box.locked .badge-img {
+  filter: grayscale(100%);
+  opacity: 0.35;
+}
+
+/* Unlocked badges */
+.badge-box.unlocked .badge-img {
+  filter: none;
+  opacity: 1;
+}
+
+.badge-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.badge-desc {
+  font-size: 0.8rem;
+  color: #d3cce6;
+}
