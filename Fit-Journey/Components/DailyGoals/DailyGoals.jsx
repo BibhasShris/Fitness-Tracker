@@ -1,8 +1,5 @@
 import React, { useMemo, useState } from "react";
 import "./DailyGoals.css";
-import Steps from "../../img/steps.png";
-import Cal from "../../img/cal.png";
-import Fit from "../../img/fit.png";
 
 export default function DailyGoals({
   todayEntry = { steps: 0, calories: 0 },
@@ -22,8 +19,8 @@ export default function DailyGoals({
 
   const fields = useMemo(
     () => [
-      { key: "steps", label: "Steps", unit: "", icon: Steps },
-      { key: "calories", label: "Calories", unit: "kcal", icon: Cal },
+      { key: "steps", label: "Steps", unit: "", icon: "/img/steps.png" },
+      { key: "calories", label: "Calories", unit: "kcal", icon: "/img/cal.png" },
     ],
     []
   );
@@ -64,7 +61,7 @@ export default function DailyGoals({
     <section className="daily-goals">
       {/* Tttle aligned with Heart Rate - added fit icon */}
       <div className="dg-header">
-        <img src={Fit} alt="Fitness Icon" className="dg-title-icon" />
+        <img src="/img/fit.png" alt="Fit" className="dg-title-icon" />
         <h2 className="dg-title">Daily Goals</h2>
       </div>
 

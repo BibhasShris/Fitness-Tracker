@@ -1,7 +1,7 @@
-/* card shell - same as .profile-card === */
+/* === Card shell: same as .profile-card === */
 .daily-goals{
-  max-width: 960px;
-  margin: 0 2rem 1.25rem 2rem;
+  max-width: 960px;             /* adjust as you like */
+  margin: 0 2rem 1.25rem 2rem;  /* left aligned like the profile */
   padding: 24px;
   border-radius: 20px;
   background: linear-gradient(145deg, #2d1b55, #1b1233);
@@ -10,7 +10,7 @@
   border: 1px solid rgba(255,255,255,0.06);
 }
 
-/* title row (icon + text) */
+/* Title row (icon + text) */
 .dg-header{
   display:flex; align-items:center; gap:10px;
   margin-bottom: 14px;
@@ -18,14 +18,14 @@
 .dg-title{ margin:0; font-size: 1.4rem; font-weight: 600; }
 .dg-title-icon{ width: 22px; height: 22px; object-fit: contain; }
 
-/* tiles layout */
+/* Tiles layout */
 .dg-grid{
   display:grid;
   grid-template-columns: repeat(2, minmax(280px, 1fr));
   gap: 16px;
 }
 
-/* tile panel inside the card */
+/* Tile “panel” inside the card */
 .dg-card{
   padding: 14px;
   border-radius: 14px;

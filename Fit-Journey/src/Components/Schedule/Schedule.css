@@ -1,0 +1,151 @@
+/* Card layout */
+.schedule-card {
+  width: 360px;
+  padding: 24px;
+  margin-top: 24px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #241a3c, #1a142b);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Title */
+.schedule-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* Workout list */
+.schedule-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* Individual workout box */
+.schedule-entry {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: background 0.3s ease;
+}
+
+.schedule-entry:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Dropdown replaces old label and changes color */
+.status-select {
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-weight: 600;
+  color: #fff;
+  outline: none;
+  cursor: pointer;
+}
+
+.status-select.not-started {
+  background-color: #5a5a5a;
+}
+
+.status-select.in-progress {
+  background-color: #ffb84d;
+  color: #222;
+}
+
+.status-select.done {
+  background-color: #58d68d;
+  color: #111;
+}
+
+.status-select option {
+  background-color: #2e1a47;
+  color: white;
+}
+
+/* Add workout button */
+.add-workout-btn {
+  width: 100%;
+  margin-top: 18px;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #b26cff, #7438ff);
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.add-workout-btn:hover {
+  background: linear-gradient(90deg, #9c5eff, #5a25e8);
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.popup-card {
+  width: 320px;
+  padding: 24px;
+  border-radius: 16px;
+  background: #2c1f4a;
+  color: white;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.popup-card h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.popup-card input,
+.popup-card select {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 0.9rem;
+  outline: none;
+}
+
+.popup-card select option {
+  background-color: #2e1a47;
+  color: white;
+}
+
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.popup-buttons button {
+  flex: 1;
+  padding: 8px 0;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  color: white;
+  background: linear-gradient(90deg, #b26cff, #7438ff);
+  cursor: pointer;
+}
+
+.popup-buttons button:hover {
+  background: linear-gradient(90deg, #9c5eff, #5a25e8);
+}

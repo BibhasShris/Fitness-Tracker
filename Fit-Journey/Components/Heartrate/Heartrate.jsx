@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Heartrate.css";
-import Heart from "../../img/bpm.png";
 
 /*
 Heart Rate Tracker sources/inspiration
@@ -148,7 +147,7 @@ export default function Heartrate() {
   return (
     <section className="hr-card">
       <div className="hr-header">
-        <img src={Heart} alt="Heart Icon" className="hr-title-icon" />
+        <img src="/img/bpm.png" alt="Heart Icon" className="hr-title-icon" />
         <h2>Heart Rate</h2>
       </div>
 

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import DailyGoals from "./Components/DailyGoals/DailyGoals";
+import Profile from "./Components/Profile/Profile.jsx";
+import DailyGoals from "./Components/DailyGoals/DailyGoals.jsx";
 import Heartrate from "./Components/Heartrate/Heartrate";
-import Rewards from "./Components/Rewards/Rewards";
+import Rewards from "./Components/RewardsForGoals/Rewards.jsx";
 import "./App.css";
+import Schedule from "./Components/Schedule/Schedule.jsx";
 
 export default function App() {
   const [today, setToday] = useState({ steps: 4200, calories: 900, heartRate: 80 });
@@ -14,17 +16,21 @@ export default function App() {
   };
 
   return (
-    <>
-      {/* Daily Goals (top) */}
-      <div className="daily-goals">
+    <div className="tracker-layout">
+      {/* Left Column */}
+      <div className="left-column">
         <DailyGoals todayEntry={today} goals={goals} onUpdate={handleUpdate} />
+        <Heartrate />
+        <Rewards todayEntry={today} goals={goals} />
+      {/* <Sleep /> will go here later */}
       </div>
 
-      {/* Heart Rate (underneath) */}
-      <Heartrate />
-
-      {/* Trophy when any goal is met (bottom-right) */}
-      <Rewards todayEntry={today} goals={goals} />
-    </>
+      {/* Right Column */}
+      <div className="right-column">
+        <Profile />
+        <Schedule />
+        {/* <Schedule /> and <Rewards /> will go here later */}
+      </div>
+    </div>
   );
 }
