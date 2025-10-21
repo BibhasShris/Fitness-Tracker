@@ -38,7 +38,6 @@ export default function App() {
       <div className="left-column">
         <DailyGoals todayEntry={today} goals={goals} onUpdate={handleUpdate} />
         <Heartrate />
-        <Rewards todayEntry={today} goals={goals} />
         {/* <Sleep /> will go here later */}
       </div>
 
@@ -46,6 +45,7 @@ export default function App() {
       <div className="right-column">
         <Profile />
         <Schedule />
+        <Rewards todayEntry={today} goals={goals} />
         {/* <Schedule /> and <Rewards /> will go here later */}
       </div>
       {/* <div>
